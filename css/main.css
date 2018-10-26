@@ -1,0 +1,12 @@
+/* CASCADING STYLE SHEET  */
+
+div {
+	display: flex;
+	width: 100%;
+}
+
+img {
+	align-self: center;
+	width: 100%;
+
+}
