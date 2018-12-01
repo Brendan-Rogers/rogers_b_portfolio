@@ -10,11 +10,15 @@ Brendan Rogers Online is a hub for Brendan Rogers content. This is it's source c
 
 ### Installation
 
-The repo can be downloaded from GitHub, preferably with `git clone https://github.com/Brendan-Rogers/rogers_b_portfolio.git`
+The repo can be downloaded from GitHub, using terminal and the command `git clone https://github.com/Brendan-Rogers/rogers_b_portfolio.git`
 
 ### Dependancies
 
-At this point, brendanrogers.online has no dependancies.
+Animate.css
+by Dan Eden
+
+Normalize.css
+by Necolas
 
 ### Testing
 

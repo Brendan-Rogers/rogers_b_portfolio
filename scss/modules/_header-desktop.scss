@@ -1,0 +1,44 @@
+@media screen and (min-width: $breakLarge) {
+	header {
+		font-family: 'San Francisco Medium';
+	}
+
+	// specifically style the word Online
+	#online {
+		font-family: 'Pacifico', cursive;
+		font-size: 0.95em;
+		color: $BrendanRed;
+	}
+
+	// flex the entire Nav bar
+	.nav-bar {
+		padding: 0;
+		list-style: none;
+		margin: 0;
+
+		display: flex;
+		align-items: baseline;
+	}
+
+	// move the nav-button array all the way to the right
+	.nav-home {
+		margin-left: auto;
+	}
+	// space the individual buttons
+	.nav-button {
+		margin-right: 2.5em;
+		// style those
+		letter-spacing: 0.01em;
+		font-size: 2em;
+	}
+	// style the main logo
+	.nav-title {
+		margin-left: 1.5em;
+		letter-spacing: -0.1em;
+		font-size: 1.7em;
+	}
+	header {
+		border-bottom: 2px solid black;
+	}
+}
+
