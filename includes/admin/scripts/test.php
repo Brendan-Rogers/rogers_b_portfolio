@@ -4,7 +4,7 @@
 include 'connect.php';
 
 // PDO query
-//$stmt = $pdo->query('SELECT * FROM tbl_items');
+// $stmt = $pdo->query('SELECT * FROM tbl_items');
 
 // Lets try a prepared statement!
 // first we replace the query arrow function with the prepare arrow function
@@ -20,6 +20,7 @@ $pic = 'celtic.png';
 // !!!!!!!!!!!!
 // IT IS THIS EXTRA LEVEL OF ABSTRACTION (REDUNDANCY) THAT PROTECTS US FROM SQL INJECTION
 // !!!!!!!!!!!!
+
 $stmt->execute([$pic]);
 // the best part is, $stmt fetches just the same as a non-prepared statement
 

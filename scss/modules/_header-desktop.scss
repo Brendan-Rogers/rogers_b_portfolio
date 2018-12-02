@@ -1,12 +1,12 @@
 @media screen and (min-width: $breakLarge) {
 	header {
-		font-family: 'San Francisco Medium';
+		font-family: 'San Francisco Bold';
 	}
 
 	// specifically style the word Online
 	#online {
 		font-family: 'Pacifico', cursive;
-		font-size: 0.95em;
+		font-size: 0.9em;
 		color: $BrendanRed;
 	}
 
@@ -35,10 +35,23 @@
 	.nav-title {
 		margin-left: 1.5em;
 		letter-spacing: -0.1em;
-		font-size: 1.7em;
+		font-size: 1.9em;
 	}
 	header {
 		border-bottom: 2px solid black;
 	}
+	// HIDE the footer nav bar
+	.footer-nav-bar {
+		display: none;
+	}
+	
 }
+
+
+
+
+
+
+
+
 

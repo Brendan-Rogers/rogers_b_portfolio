@@ -350,38 +350,100 @@ template {
   display: none;
 }
 
-header {
-  font-family: "San Francisco Medium";
-}
+@media screen and (min-width: 1280px) {
+  header {
+    font-family: "San Francisco Bold";
+  }
 
-#online {
-  font-family: "Pacifico", cursive;
-  font-size: 0.95em;
-  color: #e9054a;
-}
+  #online {
+    font-family: "Pacifico", cursive;
+    font-size: 0.9em;
+    color: #e9054a;
+  }
 
-.nav-bar {
-  padding: 0;
-  list-style: none;
-  margin: 0;
-  display: flex;
-  align-items: baseline;
-}
+  .nav-bar {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+  }
 
-.nav-home {
-  margin-left: auto;
-}
+  .nav-home {
+    margin-left: auto;
+  }
 
-.nav-button {
-  margin-right: 2.5em;
-  letter-spacing: 0.01em;
-  font-size: 2em;
-}
+  .nav-button {
+    margin-right: 2.5em;
+    letter-spacing: 0.01em;
+    font-size: 2em;
+  }
 
-.nav-title {
-  margin-left: 1.5em;
-  letter-spacing: -0.1em;
-  font-size: 1.7em;
+  .nav-title {
+    margin-left: 1.5em;
+    letter-spacing: -0.1em;
+    font-size: 1.9em;
+  }
+
+  header {
+    border-bottom: 2px solid black;
+  }
+
+  .footer-nav-bar {
+    display: none;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .main-line {
+    font-family: "San Francisco Bold";
+    font-size: 5.7em;
+    color: black;
+    text-align: center;
+    letter-spacing: -0.03em;
+  }
+
+  #interchange {
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    background-size: 500% 500%;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-animation: bgcolor 25s ease infinite;
+    animation: bgcolor 25s ease infinite;
+  }
+
+  @-webkit-keyframes bgcolor {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes bgcolor {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes bgcolor {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

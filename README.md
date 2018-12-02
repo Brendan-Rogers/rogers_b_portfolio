@@ -20,6 +20,14 @@ by Dan Eden
 Normalize.css
 by Necolas
 
+### Setup
+
+Before proper testing can be done, it's important to install the dependancies.
+
+1. Access root directory with npm-enabled command line of your choosing.
+
+2. Install animate.css with `npm install animate.css`
+
 ### Testing
 
 1. With your GIT Command Line, navigate to your server emulator's root directory (I prefer to use MAMP)

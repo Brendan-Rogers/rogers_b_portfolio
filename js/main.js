@@ -1,8 +1,11 @@
 // SEAF (Self Executing Anonymous Function)
 (function(){ console.log("JS Initialized");
-// VARIABLE STACK
-let portPiece = true;
 
+// VARIABLE STACK
+let portPiece = true,
+	item = 0;
+// number of items in my portfolio
+const itemLength = 6;
 
 
 // make the Vue object
@@ -18,34 +21,25 @@ data : {
 
 created : function() {
 
-	this.loadTest();
+	this.onLoad();
 
 },
 // Vue.js methods
 methods : {
 
-	loadTest() {
+	onLoad() {
 		const url = "includes/admin/scripts/test.php";
 
 		fetch(url) // goes to the url
 		.then(res => res.json()) // takes that JSON file, turns it into a vanilla JS object
 		.then(data => { // data variable is the different rows from the PHP query that happens at the URL we fetch from
-			this.showItem1(data[0]);
+			// do something with the data[]
 			
 		})
 		.catch(function(error) {
 			console.log(error);
 		});
 
-	},
-
-	showItem1(data) {
-		// implement when portfolio pieces are ready
-
-		// this.itemTitle = data.items_title;
-		// this.itemDescription = data.items_info;
-		// document.getElementById("testPic").src = `images/${data[0].items_pic}`;
-		
 	}
 
 }
@@ -61,11 +55,33 @@ methods : {
 document.addEventListener('keypress', (event) => {
 	const keyName = event.key;
 	console.log(keyName);
+
 	// logic structure to iterate my portfolio interchange
 	if (keyName == 'ArrowDown') {
 		console.log('INTERCHANGE down');
+		document.getElementById('interchange').classList.add('animated','fadeOutDown');
+
+		// DECREMENT item number
+		if (item == 0) {
+			item = itemLength;
+		} else {
+			item -= 1;
+		}
+		console.log(item);
+
+
 	} else if (keyName == 'ArrowUp') {
 		console.log('INTERCHANGE up');
+
+		// INCREMENT item number
+		if (item == itemLength) {
+			item = 0;
+		} else {
+			item += 1;
+		}
+		console.log(item);
+
+
 	} else if (keyName == 'Escape' && portPiece) {
 		console.log('CLOSE lightbox');
 		portPiece = false;
