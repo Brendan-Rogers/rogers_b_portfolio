@@ -1,23 +1,34 @@
 @media screen and (min-width: $breakLarge) {
-
+	
+	// style the main line
 	.main-line {
 		font-family: 'San Francisco Bold';
-		font-size: 5.7em;
+		font-size: 4.5em;
 		color: black;
 		text-align: center;
 		letter-spacing: -0.03em;
-	}	
+	}
 
+	// center the mainline
+	.mainline-container {
+		height: 75vh;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	// interchange gradient animation
 	#interchange {
 		// initial backgrond gradient
-		background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+		background: linear-gradient(-45deg, $BrendanRed, #E73C7E, #23A6D5, #23D5AB);
 	  	background-size: 500% 500%;
 	  	
 	  	// set up webkit animation
 		-webkit-text-fill-color: transparent;
 		-webkit-background-clip: text;
-		-webkit-animation: bgcolor 25s ease infinite;
-		animation: bgcolor 25s ease infinite;
+		-webkit-animation: bgcolor 13s ease infinite;
+		animation: bgcolor 13s ease infinite;
 	}
 	
 	// animation keyframes

@@ -3,3 +3,11 @@
 @import 'modules/_normalize';
 @import 'modules/_header-desktop';
 @import 'modules/_body-desktop';
+@import 'modules/_body-item';
+
+
+// utility classes
+.hidden {
+	display: none;
+	visibility: hidden;
+}

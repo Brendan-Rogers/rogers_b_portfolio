@@ -2,10 +2,14 @@
 (function(){ console.log("JS Initialized");
 
 // VARIABLE STACK
-let portPiece = true,
-	item = 0;
+let portPiece = false,
+	item = 0,
+	itemLength = 0;
+
+let itemTags = [];
+
+
 // number of items in my portfolio
-const itemLength = 6;
 
 
 // make the Vue object
@@ -15,31 +19,48 @@ el : "#app",
 
 // Vue.js variable
 data : {
-	itemTitle : "",
-	itemDescription : ""
+	portTitle : "",
+	portDescription : ""
 },
 
 created : function() {
 
-	this.onLoad();
+	this.collectTags();
 
 },
 // Vue.js methods
 methods : {
 
-	onLoad() {
-		const url = "includes/admin/scripts/test.php";
+	collectTags() {
+		// this URL returns an object of only tags
+		const url = "includes/admin/scripts/tags.php";
 
 		fetch(url) // goes to the url
 		.then(res => res.json()) // takes that JSON file, turns it into a vanilla JS object
-		.then(data => { // data variable is the different rows from the PHP query that happens at the URL we fetch from
-			// do something with the data[]
-			
+		.then(data => { // data variable is the different rows from the PHP query that happens at the URL we fetch from	
+			// get length of object
+			itemLength = Object.keys(data);
+			console.log(`How many items? : ${itemLength.length}`);
+
+			// for the number of itemLength(the amount of tags we have), put a tag into the array
+			var i = 0;
+			while(i < itemLength.length) {
+				itemTags[i] = data[i].items_tag;
+				i++;
+				// nice! itemTags now has i variables, with the appropriate tags in it
+			}
+
 		})
 		.catch(function(error) {
 			console.log(error);
 		});
 
+	},
+
+	itemClick : function (event) {
+		// console.log(`Item number ${item} has been clicked.`);
+		portPiece = true;
+		showItem();
 	}
 
 }
@@ -49,43 +70,102 @@ methods : {
 });
 // END OF VUE APP
 
-// EVENT HANDLERS
+// FUNCTIONS
+function showItem() {
+	// console.log('The showItem function has been called!');
 
+	// itemQuery is item + 1, because Primary Key starts at 1 instead of 0
+	let itemQuery = item + 1;
+	// get the info for the piece that has been clicked
+	let url = `includes/admin/scripts/items.php?item=${itemQuery}`;
+
+	fetch(url) // goes to the url
+	.then(res => res.json()) // takes that JSON file, turns it into a vanilla JS object
+	.then(data => { // data variable is the different rows from the PHP query that happens at the URL we fetch from
+		
+		// destucturing assignment, to convert our object's keys into variables, retaining their values
+		const { items_title , items_info , items_pic } = data[0];
+		// confirm we have them
+		console.log(items_title, items_info, items_pic);
+
+		document.querySelector('.portfolio-info').innerHTML = items_info;
+		document.querySelector('.portfolio-title').innerHTML = items_title;
+		document.querySelector('.portfolio-image').src = `images/${items_pic}`;
+
+
+
+	})
+	.catch(function(error) {
+		console.log(error);
+	});
+
+	// hide the Mainline Container
+	document.querySelector('.mainline-container').classList.add('hidden');
+	// show the Portfolio Container
+	document.querySelector('.portfolio-container').classList.remove('hidden');
+
+
+
+}
+
+function hideItem() {
+
+	// hide the Portfolio Container
+	document.querySelector('.portfolio-container').classList.add('hidden');
+
+	// show the Mainline Container
+	document.querySelector('.mainline-container').classList.remove('hidden');
+
+}
+
+
+
+// EVENT HANDLERS
 // checks for keypresses
 document.addEventListener('keypress', (event) => {
+
 	const keyName = event.key;
 	console.log(keyName);
 
 	// logic structure to iterate my portfolio interchange
 	if (keyName == 'ArrowDown') {
-		console.log('INTERCHANGE down');
+		// console.log('INTERCHANGE down');
 		document.getElementById('interchange').classList.add('animated','fadeOutDown');
 
 		// DECREMENT item number
 		if (item == 0) {
-			item = itemLength;
+			item = itemLength.length - 1;
 		} else {
 			item -= 1;
 		}
-		console.log(item);
 
 
 	} else if (keyName == 'ArrowUp') {
-		console.log('INTERCHANGE up');
+		// console.log('INTERCHANGE up');
 
 		// INCREMENT item number
-		if (item == itemLength) {
+		if (item == itemLength.length - 1) {
 			item = 0;
 		} else {
 			item += 1;
 		}
-		console.log(item);
 
 
 	} else if (keyName == 'Escape' && portPiece) {
-		console.log('CLOSE lightbox');
+		console.log('CLOSE portfolio');
 		portPiece = false;
+
+		hideItem();
+
+	} else if (keyName == 'Enter' && !portPiece) {
+		console.log('OPEN portfolio');
+		portPiece = true;
+
+		showItem();
 	}
+
+	document.querySelector('#interchange').innerHTML = itemTags[item];
+	console.log(`You are on tag: ${itemTags[item]}. It is item number: ${item}`);
 
 });
 

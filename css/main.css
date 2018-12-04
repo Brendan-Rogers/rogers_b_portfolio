@@ -355,6 +355,12 @@ template {
     font-family: "San Francisco Bold";
   }
 
+  .nav-title {
+    margin-left: 1.5em;
+    letter-spacing: -0.1em;
+    font-size: 1.1em;
+  }
+
   #online {
     font-family: "Pacifico", cursive;
     font-size: 0.9em;
@@ -376,13 +382,7 @@ template {
   .nav-button {
     margin-right: 2.5em;
     letter-spacing: 0.01em;
-    font-size: 2em;
-  }
-
-  .nav-title {
-    margin-left: 1.5em;
-    letter-spacing: -0.1em;
-    font-size: 1.9em;
+    font-size: 1.5em;
   }
 
   header {
@@ -396,19 +396,26 @@ template {
 @media screen and (min-width: 1280px) {
   .main-line {
     font-family: "San Francisco Bold";
-    font-size: 5.7em;
+    font-size: 4.5em;
     color: black;
     text-align: center;
     letter-spacing: -0.03em;
   }
 
+  .mainline-container {
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   #interchange {
-    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    background: linear-gradient(-45deg, #e9054a, #E73C7E, #23A6D5, #23D5AB);
     background-size: 500% 500%;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    -webkit-animation: bgcolor 25s ease infinite;
-    animation: bgcolor 25s ease infinite;
+    -webkit-animation: bgcolor 13s ease infinite;
+    animation: bgcolor 13s ease infinite;
   }
 
   @-webkit-keyframes bgcolor {
@@ -444,6 +451,30 @@ template {
       background-position: 0% 50%;
     }
   }
+}
+@media screen and (min-width: 1280px) {
+  .portfolio-title {
+    font-family: "San Francisco Bold";
+    font-size: 4em;
+    padding-left: 5%;
+    width: 45%;
+    margin-bottom: 30px;
+  }
+
+  .portfolio-info {
+    font-family: "San Francisco Medium";
+    padding-left: 5%;
+    width: 45%;
+  }
+
+  .portfolio-image {
+    width: 40%;
+    height: auto;
+  }
+}
+.hidden {
+  display: none;
+  visibility: hidden;
 }
 
 /*# sourceMappingURL=main.css.map */

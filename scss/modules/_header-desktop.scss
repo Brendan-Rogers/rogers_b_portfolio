@@ -2,7 +2,12 @@
 	header {
 		font-family: 'San Francisco Bold';
 	}
-
+	// style the main logo
+	.nav-title {
+		margin-left: 1.5em;
+		letter-spacing: -0.1em;
+		font-size: 1.1em;
+	}
 	// specifically style the word Online
 	#online {
 		font-family: 'Pacifico', cursive;
@@ -29,14 +34,9 @@
 		margin-right: 2.5em;
 		// style those
 		letter-spacing: 0.01em;
-		font-size: 2em;
+		font-size: 1.5em;
 	}
-	// style the main logo
-	.nav-title {
-		margin-left: 1.5em;
-		letter-spacing: -0.1em;
-		font-size: 1.9em;
-	}
+	
 	header {
 		border-bottom: 2px solid black;
 	}

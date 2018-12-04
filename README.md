@@ -26,7 +26,7 @@ Before proper testing can be done, it's important to install the dependancies.
 
 1. Access root directory with npm-enabled command line of your choosing.
 
-2. Install animate.css with `npm install animate.css`
+2. Install animate.css with `npm install animate.css`. The index file will link to it automatically.
 
 ### Testing
 

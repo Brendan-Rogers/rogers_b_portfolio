@@ -1,0 +1,20 @@
+@media screen and (min-width: $breakLarge) {
+	
+	.portfolio-title {
+		font-family: 'San Francisco Bold';
+		font-size: 4em;
+		padding-left: 5%;
+		width: 45%;
+		margin-bottom: 30px;
+	}
+	.portfolio-info {
+		font-family: 'San Francisco Medium';
+		padding-left: 5%;
+		width: 45%;
+	}
+	.portfolio-image {
+		width: 40%;
+		height: auto;
+	}
+
+}
