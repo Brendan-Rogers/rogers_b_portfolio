@@ -8,6 +8,8 @@ let portPiece = false,
 
 let itemTags = [];
 
+var images = new Array()
+
 
 // number of items in my portfolio
 
@@ -25,8 +27,12 @@ data : {
 
 created : function() {
 
+	// gathers the item tags, for use in the INTERCHANGE
 	this.collectTags();
 
+	// EXPERIMENTAL
+	// image preloader. uses the hosted images.
+	this.preloadImages();
 },
 // Vue.js methods
 methods : {
@@ -57,11 +63,44 @@ methods : {
 
 	},
 
-	itemClick : function (event) {
+	preloadImages : function () {
+
+		function preload() {
+			for (i = 0; i < preload.arguments.length; i++) {
+				images[i] = new Image()
+				images[i].src = preload.arguments[i]
+			}
+		}
+
+		// i need to add to this list to make my images preload
+		preload(
+			"images/celtic.png",
+			"images/deepdream.png",
+			"images/code.png",
+			"images/purevolume.png"
+		)
+
+	},
+
+	itemClick : function () {
 		// console.log(`Item number ${item} has been clicked.`);
 		portPiece = true;
 		showItem();
+	},
+
+	returnHome : function () {
+		// they've clicked on something that returns them home. to do this, we'll close the item
+		hideItem();
+	},
+	buttonUp : function () {
+		// they've clicked on something that returns them home. to do this, we'll close the item
+		itemUp();
+	},
+	buttonDown : function () {
+		// they've clicked on something that returns them home. to do this, we'll close the item
+		itemDown();
 	}
+
 
 }
 
@@ -85,11 +124,15 @@ function showItem() {
 		
 		// destucturing assignment, to convert our object's keys into variables, retaining their values
 		const { items_title , items_info , items_pic } = data[0];
+
+
 		
 		document.querySelector('.portfolio-info').innerHTML = items_info;
 		document.querySelector('.portfolio-title').innerHTML = items_title;
-		document.querySelector('.portfolio-image').src = `images/${items_pic}`;
-
+		// special preloaded images thing
+		document.querySelector('.portfolio-image').src = images[item].src;
+		//document.querySelector('.portfolio-image').src = `images/${items_pic}`;
+		
 		// confirm
 		console.log('Info updated and displayed');
 
@@ -117,72 +160,95 @@ function hideItem() {
 
 	// confirm
 	console.log('Info hidden, mainline shown.');
-}
+
+	// remove information from portfolio-container
+	// this fixes the jittery load when changing items from main menu after being in item view
+	
+	// might not actually work.. requires further testing
+	document.querySelector('.portfolio-info').innerHTML = '';
+	document.querySelector('.portfolio-title').innerHTML = '';
+	document.querySelector('.portfolio-image').src = '';
+}	
 
 
 
 // EVENT HANDLERS
 // checks for keypresses
-document.addEventListener('keypress', (event) => {
+document.addEventListener('keyup', function (event) {
 
-	const keyName = event.key;
+	// degrading, for browsers that dont support the weirdly supported .key property
+	const key = event.key || event.keyCode;
 
 	// logic structure to iterate my portfolio interchange
-	if (keyName == 'ArrowDown') {
-		// console.log('INTERCHANGE down');
-		document.getElementById('interchange').classList.add('animated','fadeOutDown');
+	if (key == 'ArrowDown') {
 
-		// DECREMENT item number
-		if (item == 0) {
-			item = itemLength.length - 1;
-		} else {
-			item -= 1;
-		}
+		// send that item DOWN
+		itemDown();
 
-		// if we're currently viewing a portfolio piece, refresh the view with new info
-		if(portPiece) {
-			showItem();
-		}
+	} else if (key == 'ArrowUp' || key === 38) {
+		
+		// send that item UP
+		itemUp();
 
 
-	} else if (keyName == 'ArrowUp') {
-		// console.log('INTERCHANGE up');
-
-		// INCREMENT item number
-		if (item == itemLength.length - 1) {
-			item = 0;
-		} else {
-			item += 1;
-		}
-
-		// if we're currently viewing a portfolio piece, refresh the view with new info
-		if(portPiece) {
-			showItem();
-		}
-
-
-	} else if (keyName == 'Escape' && portPiece) {
+	} else if (key === 'Escape' || key === 'Esc' || key === 27 && portPiece) {
 		// console.log('CLOSE portfolio');
 		portPiece = false;
 
 		hideItem();
 
-	} else if (keyName == 'Enter' && !portPiece) {
+	} else if (key == 'Enter' && !portPiece) {
 		// console.log('OPEN portfolio');
 		portPiece = true;
 
 		showItem();
 	}
+});
 
+function itemDown() {
+	// console.log('INTERCHANGE down');
+	document.getElementById('interchange').classList.add('animated','fadeOutDown');
+
+	// DECREMENT item number
+	if (item == 0) {
+		item = itemLength.length - 1;
+	} else {
+		item -= 1;
+	}
+
+	// if we're currently viewing a portfolio piece, refresh the view with new info
+	if(portPiece) {
+		showItem();
+	}
 	// write what item number we've navigated to
 	console.log(`Item: ${item}`);
 	// set the interchange element to our selected tag, using the itemTags array recovered from our showItem fetch.api
 	document.querySelector('#interchange').innerHTML = itemTags[item];
 	// console.log(`You are on tag: ${itemTags[item]}. It is item number: ${item}`);
 
-});
+}
 
+function itemUp() {
+	// console.log('INTERCHANGE up');
 
+	// INCREMENT item number
+	if (item == itemLength.length - 1) {
+		item = 0;
+	} else {
+		item += 1;
+	}
+
+	// if we're currently viewing a portfolio piece, refresh the view with new info
+	if(portPiece) {
+		showItem();
+	}
+	// write what item number we've navigated to
+	console.log(`Item: ${item}`);
+	// set the interchange element to our selected tag, using the itemTags array recovered from our showItem fetch.api
+	document.querySelector('#interchange').innerHTML = itemTags[item];
+	// console.log(`You are on tag: ${itemTags[item]}. It is item number: ${item}`);
+
+}
 
 
 

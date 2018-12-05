@@ -350,7 +350,7 @@ template {
   display: none;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 900px) {
   header {
     font-family: "San Francisco Bold";
   }
@@ -382,7 +382,8 @@ template {
   .nav-button {
     margin-right: 2.5em;
     letter-spacing: 0.01em;
-    font-size: 1.5em;
+    font-size: 1.7em;
+    transition: all 0.2s linear;
   }
 
   header {
@@ -392,21 +393,84 @@ template {
   .footer-nav-bar {
     display: none;
   }
+
+  .nav-button:hover {
+    background: linear-gradient(-45deg, #e9054a, #E73C7E, #23A6D5, #23D5AB);
+    background-size: 500% 500%;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-animation: navcolor 13s ease infinite;
+    animation: navcolor 13s ease infinite;
+    cursor: pointer;
+  }
+
+  @-webkit-keyframes navcolor {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes navcolor {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes navcolor {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 900px) {
   .main-line {
     font-family: "San Francisco Bold";
     font-size: 4.5em;
     color: black;
     text-align: center;
     letter-spacing: -0.03em;
+    cursor: pointer;
   }
 
   .mainline-container {
     height: 75vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    line-height: 1;
+  }
+
+  .mainline-container p {
+    font-size: 3em;
+    line-height: 0;
+    font-family: "San Francisco Regular";
+    animation: arrow-pulse 5s ease alternate infinite;
+    cursor: pointer;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
   }
 
   #interchange {
@@ -414,11 +478,11 @@ template {
     background-size: 500% 500%;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    -webkit-animation: bgcolor 13s ease infinite;
-    animation: bgcolor 13s ease infinite;
+    -webkit-animation: mainline-color 13s ease infinite;
+    animation: mainline-color 13s ease infinite;
   }
 
-  @-webkit-keyframes bgcolor {
+  @-webkit-keyframes mainline-color {
     0% {
       background-position: 0% 50%;
     }
@@ -429,7 +493,7 @@ template {
       background-position: 0% 50%;
     }
   }
-  @-moz-keyframes bgcolor {
+  @-moz-keyframes mainline-color {
     0% {
       background-position: 0% 50%;
     }
@@ -440,7 +504,7 @@ template {
       background-position: 0% 50%;
     }
   }
-  @keyframes bgcolor {
+  @keyframes mainline-color {
     0% {
       background-position: 0% 50%;
     }
@@ -449,27 +513,50 @@ template {
     }
     100% {
       background-position: 0% 50%;
+    }
+  }
+  @keyframes arrow-pulse {
+    0% {
+      color: #eeeeee;
+    }
+    50% {
+      color: #c9c9c9;
+    }
+    100% {
+      color: #eeeeee;
     }
   }
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 900px) {
   .portfolio-title {
     font-family: "San Francisco Bold";
     font-size: 4em;
+    padding-left: 7%;
     margin-bottom: 24px;
     margin-top: 40px;
   }
 
   .portfolio-info {
     font-family: "San Francisco Medium";
+    padding-left: 7%;
   }
 
   .portfolio-container {
     display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
   }
 
   .left-text {
-    flex: 70%;
+    flex: 60%;
+    margin-right: 3%;
+  }
+
+  .portfolio-image {
+    height: 75vh;
+    width: auto;
+    margin-top: 5vh;
+    margin-right: 3%;
   }
 }
 .hidden {
