@@ -1,20 +1,26 @@
 @media screen and (min-width: $breakLarge) {
 	
+	// style text
 	.portfolio-title {
 		font-family: 'San Francisco Bold';
 		font-size: 4em;
-		padding-left: 5%;
-		width: 45%;
-		margin-bottom: 30px;
+		// padding-left: 7%;
+		margin-bottom: 24px;
+		margin-top: 40px;
+
 	}
 	.portfolio-info {
 		font-family: 'San Francisco Medium';
-		padding-left: 5%;
-		width: 45%;
 	}
-	.portfolio-image {
-		width: 40%;
-		height: auto;
+
+	// flex the container, so the text is on the left and the photo is on the right
+	.portfolio-container {
+		display: flex;
 	}
+
+	.left-text {
+		flex: 70%;
+	}
+
 
 }

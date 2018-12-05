@@ -40,7 +40,7 @@ methods : {
 		.then(data => { // data variable is the different rows from the PHP query that happens at the URL we fetch from	
 			// get length of object
 			itemLength = Object.keys(data);
-			console.log(`How many items? : ${itemLength.length}`);
+			console.log(`The Tags are collected. There are ${itemLength.length} of them.`);
 
 			// for the number of itemLength(the amount of tags we have), put a tag into the array
 			var i = 0;
@@ -85,14 +85,13 @@ function showItem() {
 		
 		// destucturing assignment, to convert our object's keys into variables, retaining their values
 		const { items_title , items_info , items_pic } = data[0];
-		// confirm we have them
-		console.log(items_title, items_info, items_pic);
-
+		
 		document.querySelector('.portfolio-info').innerHTML = items_info;
 		document.querySelector('.portfolio-title').innerHTML = items_title;
 		document.querySelector('.portfolio-image').src = `images/${items_pic}`;
 
-
+		// confirm
+		console.log('Info updated and displayed');
 
 	})
 	.catch(function(error) {
@@ -116,6 +115,8 @@ function hideItem() {
 	// show the Mainline Container
 	document.querySelector('.mainline-container').classList.remove('hidden');
 
+	// confirm
+	console.log('Info hidden, mainline shown.');
 }
 
 
@@ -125,7 +126,6 @@ function hideItem() {
 document.addEventListener('keypress', (event) => {
 
 	const keyName = event.key;
-	console.log(keyName);
 
 	// logic structure to iterate my portfolio interchange
 	if (keyName == 'ArrowDown') {
@@ -139,6 +139,11 @@ document.addEventListener('keypress', (event) => {
 			item -= 1;
 		}
 
+		// if we're currently viewing a portfolio piece, refresh the view with new info
+		if(portPiece) {
+			showItem();
+		}
+
 
 	} else if (keyName == 'ArrowUp') {
 		// console.log('INTERCHANGE up');
@@ -150,22 +155,30 @@ document.addEventListener('keypress', (event) => {
 			item += 1;
 		}
 
+		// if we're currently viewing a portfolio piece, refresh the view with new info
+		if(portPiece) {
+			showItem();
+		}
+
 
 	} else if (keyName == 'Escape' && portPiece) {
-		console.log('CLOSE portfolio');
+		// console.log('CLOSE portfolio');
 		portPiece = false;
 
 		hideItem();
 
 	} else if (keyName == 'Enter' && !portPiece) {
-		console.log('OPEN portfolio');
+		// console.log('OPEN portfolio');
 		portPiece = true;
 
 		showItem();
 	}
 
+	// write what item number we've navigated to
+	console.log(`Item: ${item}`);
+	// set the interchange element to our selected tag, using the itemTags array recovered from our showItem fetch.api
 	document.querySelector('#interchange').innerHTML = itemTags[item];
-	console.log(`You are on tag: ${itemTags[item]}. It is item number: ${item}`);
+	// console.log(`You are on tag: ${itemTags[item]}. It is item number: ${item}`);
 
 });
 

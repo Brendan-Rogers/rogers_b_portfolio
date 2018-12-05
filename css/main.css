@@ -456,20 +456,20 @@ template {
   .portfolio-title {
     font-family: "San Francisco Bold";
     font-size: 4em;
-    padding-left: 5%;
-    width: 45%;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
+    margin-top: 40px;
   }
 
   .portfolio-info {
     font-family: "San Francisco Medium";
-    padding-left: 5%;
-    width: 45%;
   }
 
-  .portfolio-image {
-    width: 40%;
-    height: auto;
+  .portfolio-container {
+    display: flex;
+  }
+
+  .left-text {
+    flex: 70%;
   }
 }
 .hidden {

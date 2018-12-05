@@ -3,6 +3,8 @@
 // connection PDO
 include 'connect.php';
 
+// comments are for teaching my peers 'how to PDO'. also probably for teaching myself when I innevidably forget what some stuff does
+
 // if we're asking for a specific item
 if (isset($_GET['item'])) {
 	// Lets try a prepared statement!
