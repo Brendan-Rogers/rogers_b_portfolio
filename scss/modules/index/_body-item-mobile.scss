@@ -1,0 +1,85 @@
+// DESKTOP VERSION
+@media screen and (max-width: $breakLarge) {
+
+	// style text
+	.portfolio-title {
+		font-family: 'San Francisco Bold';
+		font-size: 4em;
+		padding-left: 7%;
+		margin-bottom: 24px;
+		margin-top: 40px;
+	}
+	.portfolio-info {
+		font-family: 'San Francisco Medium';
+		padding-left: 7%;
+	}
+
+	// flex the container, so the text is on the left and the photo is on the right
+	.portfolio-container {
+		display: flex;
+		// ALIGN ITEMS is AUTOMATICALLY set to STRETCH???
+		// THAT MEANS IT'LL OVERRIDE
+		//   W I D T H  &  H E I G H T  ?  ?  ?
+		align-items: flex-start;
+		// this'll fix that
+		justify-content: space-around;
+	}
+
+	.left-text {
+		flex: 60%;
+		margin-right: 3%;
+	}
+
+	.portfolio-image {
+		height: 75vh;
+		width: auto;
+
+		margin-top: 5vh;
+		margin-right: 3%;
+	}
+}
+
+
+// TABLET / MOBILE VERSION
+@media screen and (max-width: $breakLarge) {
+	// style text
+	.portfolio-title {
+		font-family: 'San Francisco Bold';
+		font-size: 4em;
+		padding-left: 7%;
+		margin-bottom: 24px;
+		margin-top: 40px;
+	}
+	.portfolio-info {
+		font-family: 'San Francisco Medium';
+		padding-left: 7%;
+	}
+
+	// flex the container, so the text is on the left and the photo is on the right
+	.portfolio-container {
+		display: flex;
+		// ALIGN ITEMS is AUTOMATICALLY set to STRETCH???
+		// THAT MEANS IT'LL OVERRIDE
+		//   W I D T H  &  H E I G H T  ?  ?  ?
+		align-items: flex-start;
+		// this'll fix that
+		justify-content: space-around;
+	}
+
+	.left-text {
+		flex: 60%;
+		margin-right: 3%;
+	}
+
+	.portfolio-image {
+		height: 75vh;
+		width: auto;
+
+		margin-top: 5vh;
+		margin-right: 3%;
+	}
+}
+
+
+
+
