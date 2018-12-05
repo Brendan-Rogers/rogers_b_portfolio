@@ -1,0 +1,70 @@
+@media screen and (max-width: $breakLarge) {
+	// hide header nav
+	.nav-header {
+		display: none;
+	}
+
+	// style the top
+	header {
+		font-family: 'San Francisco Bold';
+	}
+	// style the main logo
+	.nav-title {
+		letter-spacing: -0.1em;
+		font-size: 1.1em;
+
+		margin-top: 0;
+		margin-right: 1.2em;
+
+	}
+	// specifically style the word Online
+	#online {
+		font-family: 'Pacifico', cursive;
+		font-size: 0.9em;
+		color: $BrendanRed;
+	}
+	.nav-bar {
+		list-style: none;
+		display: flex;
+
+		justify-content: center;
+	}
+
+
+
+
+	.footer-nav-bar {
+		background-color: white;
+		overflow: hidden;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+
+		padding-left: 0;
+	}
+	.footer-nav-bar li {
+		font-family: 'San Francisco Bold';
+
+	    color: black;
+
+	    text-decoration: none;
+	    list-style: none;
+	    font-size: 20px;
+	}
+	
+
+	
+}
+
+
+
+
+
+
+
+
+

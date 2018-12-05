@@ -1,9 +1,20 @@
+// general modules
 @import 'modules/_vars';
 @import 'modules/_fonts';
 @import 'modules/_normalize';
-@import 'modules/_header-desktop';
-@import 'modules/_body-desktop';
-@import 'modules/_body-item';
+// header modules
+@import 'modules/header/_header-desktop';
+@import 'modules/header/_header-mobile';
+// body modules
+@import 'modules/index/_body-desktop';
+@import 'modules/index/_body-mobile';
+@import 'modules/index/_body-item-desktop';
+@import 'modules/index/_body-item-mobile';
+// contact modules
+
+// about modules
+
+
 
 
 // utility classes
