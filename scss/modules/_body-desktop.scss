@@ -7,6 +7,8 @@
 		color: black;
 		text-align: center;
 		letter-spacing: -0.03em;
+
+		cursor: pointer;
 	}
 
 	// center the mainline
@@ -14,8 +16,27 @@
 		height: 75vh;
 
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+
+		line-height: 1;
+	}
+
+	.mainline-container p {
+		font-size: 3em;
+		line-height: 0;
+		font-family: 'San Francisco Regular';
+		// animate the pulse of the arrows
+		animation: arrow-pulse 5s ease alternate infinite;
+
+		cursor: pointer;
+		
+		// prevents this text from being selected (its not text from a UX perspective, it's a GUI element)
+		-webkit-user-select: none; /* Safari */        
+		-moz-user-select: none; /* Firefox */
+		-ms-user-select: none; /* IE10+/Edge */
+		user-select: none; /* Standard */
 	}
 	
 	// interchange gradient animation
@@ -27,12 +48,12 @@
 	  	// set up webkit animation
 		-webkit-text-fill-color: transparent;
 		-webkit-background-clip: text;
-		-webkit-animation: bgcolor 13s ease infinite;
-		animation: bgcolor 13s ease infinite;
+		-webkit-animation: mainline-color 13s ease infinite;
+		animation: mainline-color 13s ease infinite;
 	}
 	
-	// animation keyframes
-	@-webkit-keyframes bgcolor {
+	// animation keyframes - main gradient
+	@-webkit-keyframes mainline-color {
 		0% {
 			background-position: 0% 50%
 		}
@@ -41,31 +62,42 @@
 		}
 		100% {
 			background-position: 0% 50%
+		}
+	}
+	@-moz-keyframes mainline-color {
+		0% {
+			background-position: 0% 50%
+		}
+		50% {
+			background-position: 100% 50%
+		}
+		100% {
+			background-position: 0% 50%
+		}
+	}
+	@keyframes mainline-color {
+		0% {
+			background-position: 0% 50%
+		}
+		50% {
+			background-position: 100% 50%
+		}
+		100% {
+			background-position: 0% 50%
+		}
+	}
+	// animation keyframes - pulsing arrows
+	@keyframes arrow-pulse {
+		0% {
+			color: #eeeeee;
+		}
+		50% {
+			color: #c9c9c9;
+		}
+		100% {
+			color: #eeeeee;
 		}
 	}
 
-	@-moz-keyframes bgcolor {
-		0% {
-			background-position: 0% 50%
-		}
-		50% {
-			background-position: 100% 50%
-		}
-		100% {
-			background-position: 0% 50%
-		}
-	}
-
-	@keyframes bgcolor {
-		0% {
-			background-position: 0% 50%
-		}
-		50% {
-			background-position: 100% 50%
-		}
-		100% {
-			background-position: 0% 50%
-		}
-	}
 
 }

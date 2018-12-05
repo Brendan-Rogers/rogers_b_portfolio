@@ -22,9 +22,12 @@
 		<nav>
 			<!-- NAVIGATION BAR -->
 			<ul class="nav-bar">
-				<li class="nav-title"><h1>Brendan Rogers <span id="online">Online!</span></h1></li>
-				<li class="nav-button nav-home">Home</li>
+				<li class="nav-title" v-on:click="returnHome"><h1>Brendan Rogers <span id="online">Online!</span></h1></li>
+				
+				<li class="nav-button nav-home" v-on:click="returnHome">Home</li>
+				
 				<li class="nav-button nav-about">About</li>
+				
 				<li class="nav-button nav-contact">Contact</li>
 			</ul>
 		</nav>
@@ -37,7 +40,11 @@
 	<!-- VISIBLE by default -->
 	<div class="mainline-container">
 
+	<p v-on:click="buttonUp"> &and; </p>
+
 	<h3 class="main-line" v-on:click="itemClick">Brendan Rogers is <span id="interchange">online.</span></h3>
+
+	<p v-on:click="buttonDown"> &or; </p>
 
 	</div>
 
@@ -59,9 +66,8 @@
 	
 
 	
-	</body>
+</body>
 
-	
 
 
 </main>
