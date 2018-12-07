@@ -1,10 +1,10 @@
 <!doctype html>
 
 <html class="no-js" lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <!-- vue.js interactive framework -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Brendan Rogers Online</title>
@@ -13,9 +13,10 @@
 
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
 
-  </head>
-<body>
-<main id="app">
+ </head>
+
+
+<main id="app" class="mainApp">
 	
 	<header>
 		<!-- MAIN TITLE OF WEBSITE -->
@@ -69,6 +70,7 @@
 </body>
 
 <footer>
+	
 	<ul class="footer-nav-bar">
 		
 		<li class="nav-button nav-home" v-on:click="returnHome">Home</li>
@@ -87,6 +89,7 @@
 
 
 </main>
+<script src="node_modules/hammerjs/hammer.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

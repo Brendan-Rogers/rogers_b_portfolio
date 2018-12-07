@@ -45,6 +45,9 @@ methods : {
 		.then(res => res.json()) // takes that JSON file, turns it into a vanilla JS object
 		.then(data => { // data variable is the different rows from the PHP query that happens at the URL we fetch from	
 			// get length of object
+
+			console.log(data[0].items_tag);
+
 			itemLength = Object.keys(data);
 			console.log(`The Tags are collected. There are ${itemLength.length} of them.`);
 
@@ -74,11 +77,13 @@ methods : {
 
 		// i need to add to this list to make my images preload
 		preload(
+			"images/purevolume.png",
 			"images/celtic.png",
 			"images/deepdream.png",
-			"images/code.png",
-			"images/purevolume.png"
+			"images/code.png"
 		)
+
+		console.log(`the first image is ${images[0].src}`);
 
 	},
 
@@ -131,7 +136,7 @@ function showItem() {
 		document.querySelector('.portfolio-title').innerHTML = items_title;
 		// special preloaded images thing
 		document.querySelector('.portfolio-image').src = images[item].src;
-		//document.querySelector('.portfolio-image').src = `images/${items_pic}`;
+		// document.querySelector('.portfolio-image').src = `images/${items_pic}`;
 		
 		// confirm
 		console.log('Info updated and displayed');
@@ -145,6 +150,8 @@ function showItem() {
 	document.querySelector('.mainline-container').classList.add('hidden');
 	// show the Portfolio Container
 	document.querySelector('.portfolio-container').classList.remove('hidden');
+
+	portPiece = true;
 
 
 
@@ -168,6 +175,8 @@ function hideItem() {
 	document.querySelector('.portfolio-info').innerHTML = '';
 	document.querySelector('.portfolio-title').innerHTML = '';
 	document.querySelector('.portfolio-image').src = '';
+
+	portPiece = false;
 }	
 
 
@@ -181,26 +190,19 @@ document.addEventListener('keyup', function (event) {
 
 	// logic structure to iterate my portfolio interchange
 	if (key == 'ArrowDown') {
-
 		// send that item DOWN
 		itemDown();
-
 	} else if (key == 'ArrowUp' || key === 38) {
-		
 		// send that item UP
 		itemUp();
 
-
-	} else if (key === 'Escape' || key === 'Esc' || key === 27 && portPiece) {
+	} else if (key === 'Escape' || key === 'Esc' || key === 27 || key === 'Backspace' || key === 8 && portPiece) {
 		// console.log('CLOSE portfolio');
 		portPiece = false;
-
 		hideItem();
-
 	} else if (key == 'Enter' && !portPiece) {
 		// console.log('OPEN portfolio');
 		portPiece = true;
-
 		showItem();
 	}
 });
@@ -249,6 +251,21 @@ function itemUp() {
 	// console.log(`You are on tag: ${itemTags[item]}. It is item number: ${item}`);
 
 }
+
+
+
+// HAMMER.JS SWIPE IMPLEMENTATION
+// EXPERIMENTAL
+var mc = new Hammer(document.querySelector('.mainApp'));
+
+mc.on('panup', function(ev) {
+	itemUp();
+});
+
+mc.on('pandown', function(ev) {
+	itemDown();
+});
+
 
 
 

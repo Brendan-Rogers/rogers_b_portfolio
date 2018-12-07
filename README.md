@@ -20,13 +20,18 @@ by Dan Eden
 Normalize.css
 by Necolas
 
+Hammer.js
+by Alexander Schmitz
+
 ### Setup
 
 Before proper testing can be done, it's important to install the dependancies.
 
 1. Access root directory with npm-enabled command line of your choosing.
 
-2. Install animate.css with `npm install animate.css`. The index file will link to it automatically.
+2. Install animate.css using `npm install animate.css`. The index file will link to it automatically.
+
+3. Install hammer.js using `npm install --save hammerjs`. The index file will link to it automatically.
 
 ### Testing
 
