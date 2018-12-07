@@ -3,7 +3,7 @@
 	// style the main line
 	.main-line {
 		font-family: 'San Francisco Bold';
-		font-size: 4.5em;
+		font-size: 4em;
 		color: black;
 		text-align: center;
 		letter-spacing: -0.03em;
@@ -11,13 +11,13 @@
 		cursor: pointer;
 
 		// move the pointers in real close
-		margin-top: 25px;
-		margin-bottom: 25px;
+		margin-top: 17px;
+		margin-bottom: 17px;
 	}
 
 	// center the mainline
 	.mainline-container {
-		height: 65vh;
+		height: 62vh;
 
 		display: flex;
 		flex-direction: column;
