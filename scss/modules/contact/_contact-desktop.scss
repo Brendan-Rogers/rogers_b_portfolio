@@ -1,0 +1,97 @@
+
+input {
+	width : 80%;
+	padding : 10px;
+	box-sizing: border-box;
+	background : none;
+	outline: none;
+	resize: none;
+	border: 0;
+	font-family: "San Francisco Bold";
+	transition: all .3s;
+	border-bottom: 2px solid black;
+
+	margin-left: 10%;
+	margin-bottom: 5vh;
+}
+
+input:focus { 
+	border-bottom:2px solid $BrendanRed;
+}
+
+button { 
+	padding: 8px 12px;
+	font-family: 'San Francisco Bold',sans-serif;
+	font-size: 1.5em;
+	border: 5px solid black;
+	background: white;
+	color: black;
+	cursor: pointer;
+	transition: background 4s linear;
+
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 5vh;
+}
+
+.responsiveTag {
+	margin-bottom: 25px;
+}
+
+button:hover {
+	color: white;
+	// initial backgrond gradient
+	background: linear-gradient(-45deg, $BrendanRed, #23A6D5, #23D5AB);
+  	background-size: 500% 500%;
+
+	-webkit-animation: border-color-swap 13s ease infinite;
+	animation: border-color-swap 13s ease infinite;
+}
+
+// animation keyframes - main gradient
+@-webkit-keyframes border-color-swap {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+@-moz-keyframes border-color-swap {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+@keyframes border-color-swap {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+.btnRed {
+	background-color: #ff9b8e;
+}
+
+.btnGreen {
+	background-color: #8effa2;
+}
+
+
+
+
+
