@@ -8,7 +8,7 @@ input {
 	resize: none;
 	border: 0;
 	font-family: "San Francisco Bold";
-	transition: all .3s;
+	transition: all .2s ease;
 	border-bottom: 2px solid black;
 
 	margin-left: 10%;
@@ -27,11 +27,10 @@ button {
 	background: white;
 	color: black;
 	cursor: pointer;
-	transition: background 4s linear;
+	transition: all 4s ease;
 
 	width: 60%;
 	margin-left: 20%;
-	margin-top: 5vh;
 }
 
 .responsiveTag {
@@ -39,7 +38,6 @@ button {
 }
 
 button:hover {
-	color: white;
 	// initial backgrond gradient
 	background: linear-gradient(-45deg, $BrendanRed, #23A6D5, #23D5AB);
   	background-size: 500% 500%;
@@ -91,6 +89,18 @@ button:hover {
 	background-color: #8effa2;
 }
 
+@media screen and (min-width: $breakLarge) {
+	.btnMessage {
+		margin-top: 5vh;
+	}
+}
+
+@media screen and (max-width: $breakLarge) {
+	.btnMessage {
+		margin-top: 2vh;
+		margin-bottom: 12vh;
+	}
+}
 
 
 

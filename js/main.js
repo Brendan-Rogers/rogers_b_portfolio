@@ -197,7 +197,9 @@ function showItem() {
 		document.querySelector('.portfolio-title').innerHTML = items_title;
 		// special preloaded images thing
 		document.querySelector('.portfolio-image').src = images[item].src;
+		document.querySelector('.hb-single').href = `images/${items_pic}`;
 		// document.querySelector('.portfolio-image').src = `images/${items_pic}`;
+		
 		
 		// confirm
 		console.log('Info updated and displayed');
@@ -341,6 +343,25 @@ mc.on('panup', function(ev) {
 mc.on('pandown', function(ev) {
 	itemDown();
 });
+
+// ANIME.JS ANIMATION IMPLEMENTATION
+// EXPERIMENTAL
+
+var lineDrawing = anime({
+  targets: '#lineDrawing .lines path',
+  strokeDashoffset: [anime.setDashoffset, 0],
+  easing: 'easeInOutSine',
+  duration: 1500,
+  delay: function(el, i) { return i * 250 },
+  direction: 'alternate',
+  loop: true
+});
+
+
+// HALKABOX IMPLEMENTATION
+halkaBox.run("hb-single");
+
+
 
 }) ();
 

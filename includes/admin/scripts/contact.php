@@ -12,13 +12,11 @@ function send_email(){
         exit;
     }
 
-   // if(!filter_var($))
-
     $to = 'brendanr11@gmail.com';
-    $subject = 'Brendan Rogers Online - sent from: '.$_POST['name'];
+    $subject = 'Brendan Rogers Online - sent from '.$_POST['name'];
     $message = $_POST['message'];
-    $headers = 'From: '.$_POST['email'];
-    $headers .= '   Reply-To: '.$_POST['name'];
+    $headers = 'From: brendan@brendanrogers.online';
+    $headers .= '   Reply-To: '.$_POST['email'];
 
     mail($to, $subject, $message, $headers);
 }
