@@ -1,0 +1,97 @@
+.about-container {
+	display: flex;
+	align-items: center;
+}
+
+.about-title {
+	width: 49%;
+	margin-left: 1%;
+	font-size: 0.9em;
+}
+.about-title h3 {
+	text-align: left;
+	margin-top: 3%;
+
+}
+
+.about-blurb {
+	width: 40%;
+	margin-left: 3%;
+}
+.about-blurb p {
+	font-family: 'San Francisco Medium';
+	line-height: 2em;
+	font-size: 1.3em;
+}
+
+video {
+	width: 70%;
+	margin-left: 15%;
+}
+
+.social-icons {
+	display: flex;
+	justify-content: space-around;
+}
+
+
+// Inline FontAwesome
+.fab {
+	font-size: 3em;
+}
+
+// SVG Styling
+a {
+	fill:#fff;
+	stroke:#000;
+} 
+.a,.b {
+	stroke-miterlimit:10;
+	stroke-width:5px;
+}
+.b {
+	fill:none;
+	stroke:#e9054a;
+}
+
+@media screen and (max-width: $breakLarge) {
+	.about-container {
+		flex-direction: column;
+	}
+	.about-title {
+		width: 80%;
+	}
+	video {
+		width: 90%;
+		margin-left: 5%;
+		margin-right: 0;
+	}
+	.about-blurb {
+		width: 80%;
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 15vh;
+	}
+}
+
+.fa-youtube, .fa-github, .fa-instagram, .fa-twitter {
+	transition: color 0.25s ease;
+	color: black;
+}
+
+.fa-youtube:hover {
+	color: #ff0000;
+}
+
+.fa-twitter:hover {
+	color: #1da1f2;
+}
+
+.fa-instagram:hover {
+	color:  #c32aa3;
+}
+
+.fa-github:hover {
+	color: #6cc644;
+}
+

@@ -8,7 +8,9 @@ let portPiece = false,
 
 let itemTags = [];
 
-var images = new Array()
+var images = new Array();
+
+var location = 'home';
 
 
 // number of items in my portfolio
@@ -33,6 +35,9 @@ created : function() {
 	// EXPERIMENTAL
 	// image preloader. uses the hosted images.
 	this.preloadImages();
+
+	// Check if we've been loaded by Contact
+	this.contactCheck();
 },
 // Vue.js methods
 methods : {
@@ -93,10 +98,43 @@ methods : {
 		showItem();
 	},
 
-	returnHome : function () {
+	goHome : function () {
 		// they've clicked on something that returns them home. to do this, we'll close the item
+		// this behaviour exists because we want home to default to the mainline
 		hideItem();
+		// then, we'll make sure we hidden Contact and About
+		hideContact();
+		hideAbout();
+		// lastly, we'll make sure the home page is revealed
+		showIndex();
+		// these functions will hide anything thats NOT mainline-container
+		location = 'home';
+		console.log(`You are: ${location}`);
+
 	},
+	goAbout : function () {
+		console.log('Hiding stuff now.');
+		// hidden Contact and Index
+		hideContact();
+		hideIndex();
+		// lastly, we'll make sure the home page is revealed
+		showAbout();
+		// these functions will hide anything thats NOT mainline-container
+		location = 'about';
+		console.log(`You are: ${location}`);
+
+	},
+	goContact : function () {
+		// hidden Contact and About
+		hideIndex();
+		hideAbout();
+		// lastly, we'll make sure the home page is revealed
+		showContact();
+		// these functions will hide anything thats NOT mainline-container
+		location = 'contact';
+		console.log(`You are: ${location}`);
+	},
+
 	buttonUp : function () {
 		// they've clicked on something that returns them home. to do this, we'll close the item
 		itemUp();
@@ -104,6 +142,29 @@ methods : {
 	buttonDown : function () {
 		// they've clicked on something that returns them home. to do this, we'll close the item
 		itemDown();
+	},
+
+	contactCheck : function () {
+		if (window.location.href.indexOf('fail') > 1) {
+			console.log('Message Failure');
+			showContact();
+			hideIndex();
+
+			// style button for Failed message
+			document.querySelector('.btnMessage').innerHTML = 'Failed to send. Try again?';
+			document.querySelector('.btnMessage').classList.add('btnRed');
+			document.querySelector('.btnMessage').disabled = false;
+			
+		} else if (window.location.href.indexOf('success') > 1) {
+			console.log('Message Success');
+			showContact();
+			hideIndex();
+
+			// style button for Sent message
+			document.querySelector('.btnMessage').innerHTML = 'Message has been sent!';
+			document.querySelector('.btnMessage').classList.add('btnGreen');
+			document.querySelector('.btnMessage').disabled = true;
+		}
 	}
 
 
@@ -136,7 +197,9 @@ function showItem() {
 		document.querySelector('.portfolio-title').innerHTML = items_title;
 		// special preloaded images thing
 		document.querySelector('.portfolio-image').src = images[item].src;
+		document.querySelector('.hb-single').href = `images/${items_pic}`;
 		// document.querySelector('.portfolio-image').src = `images/${items_pic}`;
+		
 		
 		// confirm
 		console.log('Info updated and displayed');
@@ -152,9 +215,6 @@ function showItem() {
 	document.querySelector('.portfolio-container').classList.remove('hidden');
 
 	portPiece = true;
-
-
-
 }
 
 function hideItem() {
@@ -179,6 +239,70 @@ function hideItem() {
 	portPiece = false;
 }	
 
+function itemDown() {
+	// console.log('INTERCHANGE down');
+	document.getElementById('interchange').classList.add('animated','fadeOutDown');
+
+	// DECREMENT item number
+	if (item == 0) {
+		item = itemLength.length - 1;
+	} else {
+		item -= 1;
+	}
+
+	// if we're currently viewing a portfolio piece, refresh the view with new info
+	if(portPiece) {
+		showItem();
+	}
+	// write what item number we've navigated to
+	console.log(`Item: ${item}`);
+	// set the interchange element to our selected tag, using the itemTags array recovered from our showItem fetch.api
+	document.querySelector('#interchange').innerHTML = itemTags[item];
+	// console.log(`You are on tag: ${itemTags[item]}. It is item number: ${item}`);
+}
+
+function itemUp() {
+	// console.log('INTERCHANGE up');
+
+	// INCREMENT item number
+	if (item == itemLength.length - 1) {
+		item = 0;
+	} else {
+		item += 1;
+	}
+
+	// if we're currently viewing a portfolio piece, refresh the view with new info
+	if(portPiece) {
+		showItem();
+	}
+	// write what item number we've navigated to
+	console.log(`Item: ${item}`);
+	// set the interchange element to our selected tag, using the itemTags array recovered from our showItem fetch.api
+	document.querySelector('#interchange').innerHTML = itemTags[item];
+	// console.log(`You are on tag: ${itemTags[item]}. It is item number: ${item}`);
+}
+
+// toggle contact functions
+function hideContact() {
+	document.querySelector('.contact-container').classList.add('hidden');
+}
+function showContact() {
+	document.querySelector('.contact-container').classList.remove('hidden');	
+}
+// toggle about functions
+function hideAbout() {
+	document.querySelector('.about-container').classList.add('hidden');
+}
+function showAbout() {
+	document.querySelector('.about-container').classList.remove('hidden');	
+}
+// toggle index functions
+function hideIndex() {
+	document.querySelector('.index-container').classList.add('hidden');
+}
+function showIndex() {
+	document.querySelector('.index-container').classList.remove('hidden');	
+}
 
 
 // EVENT HANDLERS
@@ -207,67 +331,35 @@ document.addEventListener('keyup', function (event) {
 	}
 });
 
-function itemDown() {
-	// console.log('INTERCHANGE down');
-	document.getElementById('interchange').classList.add('animated','fadeOutDown');
-
-	// DECREMENT item number
-	if (item == 0) {
-		item = itemLength.length - 1;
-	} else {
-		item -= 1;
-	}
-
-	// if we're currently viewing a portfolio piece, refresh the view with new info
-	if(portPiece) {
-		showItem();
-	}
-	// write what item number we've navigated to
-	console.log(`Item: ${item}`);
-	// set the interchange element to our selected tag, using the itemTags array recovered from our showItem fetch.api
-	document.querySelector('#interchange').innerHTML = itemTags[item];
-	// console.log(`You are on tag: ${itemTags[item]}. It is item number: ${item}`);
-
-}
-
-function itemUp() {
-	// console.log('INTERCHANGE up');
-
-	// INCREMENT item number
-	if (item == itemLength.length - 1) {
-		item = 0;
-	} else {
-		item += 1;
-	}
-
-	// if we're currently viewing a portfolio piece, refresh the view with new info
-	if(portPiece) {
-		showItem();
-	}
-	// write what item number we've navigated to
-	console.log(`Item: ${item}`);
-	// set the interchange element to our selected tag, using the itemTags array recovered from our showItem fetch.api
-	document.querySelector('#interchange').innerHTML = itemTags[item];
-	// console.log(`You are on tag: ${itemTags[item]}. It is item number: ${item}`);
-
-}
 
 
 
 // HAMMER.JS SWIPE IMPLEMENTATION
 // EXPERIMENTAL
 var mc = new Hammer(document.querySelector('.mainApp'));
-
 mc.on('panup', function(ev) {
 	itemUp();
 });
-
 mc.on('pandown', function(ev) {
 	itemDown();
 });
 
+// ANIME.JS ANIMATION IMPLEMENTATION
+// EXPERIMENTAL
+
+var lineDrawing = anime({
+  targets: '#lineDrawing .lines path',
+  strokeDashoffset: [anime.setDashoffset, 0],
+  easing: 'easeInOutSine',
+  duration: 1500,
+  delay: function(el, i) { return i * 250 },
+  direction: 'alternate',
+  loop: true
+});
 
 
+// HALKABOX IMPLEMENTATION
+halkaBox.run("hb-single");
 
 
 

@@ -7,6 +7,17 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <!-- vue.js interactive framework -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- anime.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+    <!-- Links to Halkabox -->
+    <link rel="stylesheet" href="node_modules/halkabox/dist/halkaBox.min.css">
+	<script src="node_modules/halkabox/dist/halkaBox.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- link favicon -->
+    <link rel="icon" 
+      type="image/png" 
+      href="favicon.png">
     <title>Brendan Rogers Online</title>
     <link rel="stylesheet" href="css/main.css">
 
@@ -23,65 +34,122 @@
 		<nav>
 			<!-- NAVIGATION BAR -->
 			<ul class="nav-bar">
-				<li class="nav-title" v-on:click="returnHome"><h1>Brendan Rogers <span id="online">Online!</span></h1></li>
+				<li v-on:click="goHome" class="nav-title" ><h1>Brendan Rogers <span id="online">Online!</span></h1></li>
 				
-				<li class="nav-header nav-button nav-home" v-on:click="returnHome">Home</li>
+				<li v-on:click="goHome" class="nav-header nav-button nav-home" >Home</li>
 				
-				<li class="nav-header nav-button nav-about">About</li>
+				<li v-on:click="goAbout" class="nav-header nav-button nav-about">About</li>
 				
-				<li class="nav-header nav-button nav-contact">Contact</li>
+				<li v-on:click="goContact" class="nav-header nav-button nav-contact">Contact</li>
 			</ul>
 		</nav>
 	</header>
 	
-	<body>
-		
+<body>
 	
-	<!-- INDEX PAGE -->
-	<!-- VISIBLE by default -->
-	<div class="mainline-container">
+	<!-- contains the entire index screen -->
+	<div class="index-container">
+		<!-- INDEX PAGE -->
+		<!-- VISIBLE by default -->
+		<div class="mainline-container">
 
-	<p v-on:click="buttonUp" class="animated fadeIn"> &and; </p>
+		<p v-on:click="buttonUp" class="animated fadeIn"> &and; </p>
 
-	<h3 class="main-line animated fadeInUp" v-on:click="itemClick">Brendan Rogers is <span id="interchange">online.</span></h3>
+		<h3 class="main-line animated fadeInUp" v-on:click="itemClick">Brendan Rogers is <span id="interchange">online.</span></h3>
 
-	<p v-on:click="buttonDown" class="animated fadeIn"> &or; </p>
+		<p v-on:click="buttonDown" class="animated fadeIn"> &or; </p>
 
-	</div>
-
-	<!-- PORTFOLIO PIECE PAGE -->
-	<!-- HIDDEN by default -->
-	<div class="portfolio-container hidden">
-
-		<div class="left-text">
-			<h3 class="portfolio-title"></h3>
-			<p class="portfolio-info"></p>
 		</div>
 
-		
-		<img class="portfolio-image" src="" alt="Portfolio">
+		<!-- PORTFOLIO PIECE PAGE -->
+		<!-- HIDDEN by default -->
+		<div class="portfolio-container hidden animated fadeIn">
 
+			<div class="left-text">
+				<h3 class="portfolio-title animated fadeInDown"></h3>
+				<p class="portfolio-info"></p>
+			</div>
+
+			
+			<a href="images/purevolume.png" class="hb-single" title="Caption"><img class="portfolio-image animated fadeIn " src="" alt="Portfolio"></a>
+
+
+		</div>
+	</div>
+
+	<!-- contains the entire about screen -->
+	<div class="about-container hidden">
+		
+		<div class="about-title">
+
+			<h3 class="main-line animated fadeInLeft">Brendan Rogers is <span id="interchange">on the cutting edge.</span></h3>
+
+
+			<video controls class="animated fadeInLeft">
+
+			    <source src="videos/demo_large.mp4"
+			            type="video/mp4">
+
+			    Sorry, your browser doesn't support embedded videos.
+			</video>
+
+		
+			
+
+
+
+
+
+
+
+
+		</div>
+		
+		<div class="about-blurb animated fadeInRight">
+			<p>Focused on web development, but he's also and avid movie boy. Shredding through PHP tutorials like theres no tomorrow, and learning cutting edge CSS and JS tech because there is one. He's a small town boy, who's ready to show the city what nerd passion means. 
+			<br>
+			<br>
+			This kid is the real deal. 
+			<br>
+			<div class="social-icons">
+				<a href="https://www.instagram.com/brendanrogers.online/" target="_blank"><i class="fab fa-instagram"></i></a>
+				<a href="https://twitter.com/brendanr11" target="_blank"><i class="fab fa-twitter"></i></a>
+				<a href="www.notwheat.ca" target="_blank"><i class="fab fa-youtube"></i></a>
+				<a href="https://github.com/Brendan-Rogers" target="_blank"><i class="fab fa-github"></i></a>
+			</div>
+			</p>
+		</div>
 
 	</div>
 	
-	
+	<!-- contains the entire contact screen -->
+	<div class="contact-container hidden animated fadeIn">
+		<h3 class="main-line responsiveTag animated fadeInDown">Brendan Rogers is <span id="interchange">responsive.</span></h3>
+
+
+		<form class="form" method="post" action="includes/admin/scripts/contact.php" >
+
+		  	<input placeholder="Your name" name="name" type="text"></input>
+		  	<input placeholder="Your email address" name="email" type="email"></input>
+		  	<input type="text" placeholder="Your message" name="message"></input>
+		  	
+		  	<button class="btnMessage">Send</button>
+
+		</form>
+	</div>
 
 	
 </body>
 
-<footer>
-	
+<footer>	
 	<ul class="footer-nav-bar">
 		
-		<li class="nav-button nav-home" v-on:click="returnHome">Home</li>
+		<li v-on:click="goHome" class="nav-button nav-home" >Home</li>
 		
-		<li class="nav-button nav-about">About</li>
+		<li v-on:click="goAbout" class="nav-button nav-about">About</li>
 		
-		<li class="nav-button nav-contact">Contact</li>
+		<li v-on:click="goContact" class="nav-button nav-contact">Contact</li>
 	</ul>
-
-
-
 </footer>
 
 

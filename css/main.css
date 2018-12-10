@@ -733,6 +733,200 @@ template {
     margin-bottom: 10vh;
   }
 }
+input {
+  width: 80%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: none;
+  outline: none;
+  resize: none;
+  border: 0;
+  font-family: "San Francisco Bold";
+  transition: all 0.2s ease;
+  border-bottom: 2px solid black;
+  margin-left: 10%;
+  margin-bottom: 5vh;
+}
+
+input:focus {
+  border-bottom: 2px solid #e9054a;
+}
+
+button {
+  padding: 8px 12px;
+  font-family: "San Francisco Bold", sans-serif;
+  font-size: 1.5em;
+  border: 5px solid black;
+  background: white;
+  color: black;
+  cursor: pointer;
+  transition: all 4s ease;
+  width: 60%;
+  margin-left: 20%;
+}
+
+.responsiveTag {
+  margin-bottom: 25px;
+}
+
+button:hover {
+  background: linear-gradient(-45deg, #e9054a, #23A6D5, #23D5AB);
+  background-size: 500% 500%;
+  -webkit-animation: border-color-swap 13s ease infinite;
+  animation: border-color-swap 13s ease infinite;
+}
+
+@-webkit-keyframes border-color-swap {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes border-color-swap {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes border-color-swap {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.btnRed {
+  background-color: #ff9b8e;
+}
+
+.btnGreen {
+  background-color: #8effa2;
+}
+
+@media screen and (min-width: 900px) {
+  .btnMessage {
+    margin-top: 5vh;
+  }
+}
+@media screen and (max-width: 900px) {
+  .btnMessage {
+    margin-top: 2vh;
+    margin-bottom: 12vh;
+  }
+}
+.about-container {
+  display: flex;
+  align-items: center;
+}
+
+.about-title {
+  width: 49%;
+  margin-left: 1%;
+  font-size: 0.9em;
+}
+
+.about-title h3 {
+  text-align: left;
+  margin-top: 3%;
+}
+
+.about-blurb {
+  width: 40%;
+  margin-left: 3%;
+}
+
+.about-blurb p {
+  font-family: "San Francisco Medium";
+  line-height: 2em;
+  font-size: 1.3em;
+}
+
+video {
+  width: 70%;
+  margin-left: 15%;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.fab {
+  font-size: 3em;
+}
+
+a {
+  fill: #fff;
+  stroke: #000;
+}
+
+.a, .b {
+  stroke-miterlimit: 10;
+  stroke-width: 5px;
+}
+
+.b {
+  fill: none;
+  stroke: #e9054a;
+}
+
+@media screen and (max-width: 900px) {
+  .about-container {
+    flex-direction: column;
+  }
+
+  .about-title {
+    width: 80%;
+  }
+
+  video {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 0;
+  }
+
+  .about-blurb {
+    width: 80%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 15vh;
+  }
+}
+.fa-youtube, .fa-github, .fa-instagram, .fa-twitter {
+  transition: color 0.25s ease;
+  color: black;
+}
+
+.fa-youtube:hover {
+  color: #ff0000;
+}
+
+.fa-twitter:hover {
+  color: #1da1f2;
+}
+
+.fa-instagram:hover {
+  color: #c32aa3;
+}
+
+.fa-github:hover {
+  color: #6cc644;
+}
+
 .hidden {
   display: none;
   visibility: hidden;
