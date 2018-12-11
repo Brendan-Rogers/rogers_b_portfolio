@@ -195,10 +195,10 @@ function showItem() {
 		
 		document.querySelector('.portfolio-info').innerHTML = items_info;
 		document.querySelector('.portfolio-title').innerHTML = items_title;
-		// special preloaded images thing
-		document.querySelector('.portfolio-image').src = images[item].src;
+		document.querySelector('.portfolio-image').src = `images/${items_pic}`;
+		// special preloaded images thing (Taken out of use for the localhost)
+		// document.querySelector('.portfolio-image').src = images[item].src;
 		document.querySelector('.hb-single').href = `images/${items_pic}`;
-		// document.querySelector('.portfolio-image').src = `images/${items_pic}`;
 		
 		
 		// confirm
